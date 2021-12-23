@@ -1,0 +1,8 @@
+.ComponentWrapper {
+    display: contents;
+}
+
+.ComponentWrapper-Element {
+    display: contents;
+    pointer-events: none;
+}

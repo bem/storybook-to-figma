@@ -1,0 +1,12 @@
+{
+  "name": "storybook-to-figma",
+  "id": "1043511781116662661",
+  "api": "1.0.0",
+
+  "main": "./figma.js",
+  "ui": "./index.html",
+
+  "editorType": [
+    "figma"
+  ]
+}

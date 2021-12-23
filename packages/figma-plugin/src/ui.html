@@ -1,0 +1,46 @@
+<div id="container">
+    <div id="iframe_placeholder" class="iframe_placeholder">
+        No Storybook selected
+    </div>
+    <iframe id="storybook_iframe"></iframe>
+
+    <div class="icon-button floating_button" id="open_modal_button">
+        <div class="icon icon--settings icon--white8"></div>
+    </div>
+
+    <div class="modal_background" id="modal_background">
+        <div class="modal">
+            <!-- Close button -->
+            <div class="icon-button icon--white8" id="close_modal_button">
+                <div class="icon icon--close"></div>
+            </div>
+            
+            <!-- Left column -->
+            <div class="modal_column">
+                <h3>Select a Storybook</h3>
+                <select name="" id="storybook_select"></select>
+                <!-- Buttons -->
+                <button id="delete_button" disabled class="button button--secondary-destructive mb-xxsmall">
+                    Delete this storybook
+                </button>
+                <button id="delete_confirm_button" class="button button--primary-destructive mb-xxsmall">
+                    Are you sure?
+                </button>
+            </div>
+
+            <!-- Right column -->
+            <div class="modal_column">
+                <h3>Add a new Storybook</h3>
+                <div class="input input--with-icon mb-xxsmall">
+                    <div class="icon icon--link-connected"></div>
+                    <input type="input" class="input__field" id="storybook_link" placeholder="Storybook link">
+                </div>
+                <div class="input input--with-icon mb-xxsmall">
+                    <div class="icon icon--library"></div>
+                    <input type="input" class="input__field" id="storybook_name" placeholder="Name of the Storybook">
+                </div>
+                <button class="button button--primary mb-xxsmall" id="storybook_button" disabled>Add a Storybook</button>
+            </div>
+        </div>
+    </div>
+</div>
