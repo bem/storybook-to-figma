@@ -1,2 +1,2 @@
-# Storybook to Figma
+# Storybook to Figma - Figma Plugin
 WIP
