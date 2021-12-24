@@ -11,6 +11,8 @@
   "license": "",
   "devDependencies": {
     "@figma/plugin-typings": "^1.39.1",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@types/uuid": "^8.3.3",
     "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
@@ -26,6 +28,8 @@
   },
   "dependencies": {
     "figma-plugin-ds": "^1.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "uuid": "^8.3.2"
   }
 }
