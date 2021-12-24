@@ -5,8 +5,10 @@
     "lib": ["es6", "DOM"],
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/@figma"
+      "./node_modules/@figma",
+      "./types"
     ],
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
   }
 }
