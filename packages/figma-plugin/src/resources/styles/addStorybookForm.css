@@ -1,0 +1,39 @@
+.add-storybook-form {
+    border-radius: 16px;
+    padding: 12px;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--background);
+    color: var(--foreground);
+}
+
+.add-storybook-form-inputs {
+    display: flex;
+    flex-flow: column;
+    align-items: left;
+}
+
+.add-storybook-form path {
+    transform: rotate(45deg);
+    transform-origin: 50% 50%;
+    fill: var(--foreground);
+}
+
+.add-storybook-form svg:hover {
+    cursor: pointer;
+}
+
+.name-input {
+    border: none;
+    margin-bottom: 1px;
+    width: 100%;
+}
+
+.link-input {
+    border: none;
+    width: 100%;
+}

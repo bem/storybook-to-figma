@@ -1,0 +1,26 @@
+.storybook-item {
+    border-radius: 16px;
+    padding: 16px;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--background);
+    color: var(--foreground);
+}
+
+.storybook-item path {
+    fill: var(--foreground);
+}
+
+.storybook-item svg:hover {
+    cursor: pointer;
+}
+
+.storybook-item-text {
+    display: flex;
+    flex-flow: column;
+    align-items: left;
+}

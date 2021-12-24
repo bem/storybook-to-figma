@@ -3,6 +3,7 @@ import StorybookStorage from '../modules/storybook/StorybookStorage';
 import Iframe from './Iframe';
 import Modal from './modal/Modal';
 import ModalOpenButton from './modal/ModalOpenButton';
+import StorybookList from './storybook/StorybookList';
 
 interface AppState {
     modalOpen: boolean;
@@ -30,7 +31,7 @@ export default class App extends React.Component {
             <Iframe/>
             <ModalOpenButton callback={() => this.setModalOpen(true)}/>
             <Modal isShown={this.state.modalOpen} closeButtonCallback={() => this.setModalOpen(false)}>
-                <h1> Hello from React! </h1>
+                <StorybookList/>
             </Modal>
         </div>
     }

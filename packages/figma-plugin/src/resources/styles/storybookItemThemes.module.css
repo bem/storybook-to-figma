@@ -1,0 +1,43 @@
+/* Storybook item themes */
+
+/* Dark themes */
+.glacier {
+    --foreground: #A1D6E2;
+    --background: #1995AD;
+}
+
+.branch {
+    --foreground: #5D535E;
+    --background: #9A9EAB;
+}
+
+.sunset {
+    --foreground: #2D4262;
+    --background: #D09683;
+}
+
+.olive {
+    --foreground: #DB9501;
+    --background: #6E6702;
+}
+
+/* Light */
+.flowerfield {
+    --foreground: #D70026;
+    --background: #89DA59;
+}
+
+.tropical {
+    --foreground: #FFD64D;
+    --background: #F52549;
+}
+
+.garden {
+    --foreground: #CF3721;
+    --background: #F5BE41;
+}
+
+.greece {
+    --foreground: #F4EADE;
+    --background: #2988BC;
+}

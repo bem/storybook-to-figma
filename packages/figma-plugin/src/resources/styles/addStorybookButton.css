@@ -1,0 +1,26 @@
+.add-storybook-button {
+    border: 11px solid #C8C8C8;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    display: flex;
+    flex-flow: row;
+    justify-items: center;
+    align-items: center;
+
+    color: #C8C8C8;
+
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+.add-storybook-button-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.add-storybook-button path {
+    fill: #C8C8C8;
+}

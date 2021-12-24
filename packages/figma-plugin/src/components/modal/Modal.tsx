@@ -10,8 +10,10 @@ interface ModalProps {
 export default function Modal(props : React.PropsWithChildren<ModalProps>) {
     let modal = <div className="modal_background">
         <div className="modal">
-            <ModalCloseButton callback={props.closeButtonCallback} />
-            {props.children}
+            <div className="modal-scrollable-frame">
+                <ModalCloseButton callback={props.closeButtonCallback} />
+                {props.children}
+            </div>
         </div>
     </div>;
 
