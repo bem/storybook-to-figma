@@ -1,6 +1,6 @@
 @import '~figma-plugin-ds/dist/figma-plugin-ds.css';
 
-#container {
+.container {
   height: 100%;
   display: flex;
   flex-flow: column;
@@ -50,7 +50,7 @@ iframe {
   width:100%;
   height:100%;
 
-  display: none;
+  display: flex;
 
   align-items: center;
   justify-content: center;
