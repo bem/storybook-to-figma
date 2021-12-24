@@ -25,7 +25,7 @@ module.exports = (env, argv) => {
         devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
         entry: {
-            ui: './src/ui.ts',
+            ui: './src/ui.tsx',
             figma: './src/figma.ts', // The entry point for your plugin code
         },
 
