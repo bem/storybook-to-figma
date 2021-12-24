@@ -1,4 +1,4 @@
-import './ui.css'
+import './resources/styles/ui.css'
 import ModalWindow from './modules/ui/ModalWindow'
 import App from './components/App'
 

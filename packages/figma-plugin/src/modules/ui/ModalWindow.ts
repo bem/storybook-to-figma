@@ -1,5 +1,7 @@
 /// <reference lib="dom" />
-export default class StorybookAdder {
+import "../../resources/styles/modal.css"
+
+export default class ModalWindow {
     init() : void {
         document
             .getElementById("open_modal_button")
