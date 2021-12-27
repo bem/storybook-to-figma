@@ -1,31 +1,27 @@
 import React, { useCallback } from "react";
 import { useGlobals } from "@storybook/api";
 import { Icons, IconButton } from "@storybook/components";
-import { TOOL_ID } from "./constants";
+import { TOOL_ID, ADDON_ACTIVE_ID } from "./constants";
 
 export const Tool = () => {
-  const [{ myAddon }, updateGlobals] = useGlobals();
+  const [{ [ADDON_ACTIVE_ID] : addonActive }, updateGlobals] = useGlobals();
 
   const toggleMyTool = useCallback(
     () =>
       updateGlobals({
-        myAddon: myAddon ? undefined : true,
+        [ADDON_ACTIVE_ID]: addonActive ? undefined : true,
       }),
-    [myAddon]
+    [addonActive]
   );
 
   return (
     <IconButton
       key={TOOL_ID}
-      active={myAddon}
+      active={addonActive}
       title="Enable Storybook-To-Figma"
       onClick={toggleMyTool}
     >
-      {/*
-        Checkout https://next--storybookjs.netlify.app/official-storybook/?path=/story/basics-icon--labels
-        for the full list of icons
-      */}
-      <Icons icon="lightning" />
+      <Icons icon="grid" />
     </IconButton>
   );
 };
