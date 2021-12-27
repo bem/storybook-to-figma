@@ -9,7 +9,6 @@ export const withGlobals = (StoryFn: any, context: StoryContext) => {
   const [{ [ADDON_ACTIVE_ID] : addonActive }] = useGlobals();
 
   const enabled = context.viewMode === "story" && addonActive;
-    console.log(context);
   if (!enabled) {
     return StoryFn();
   }

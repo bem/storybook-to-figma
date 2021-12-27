@@ -97,7 +97,6 @@ export const sendToFigma = ({
     const layers = htmlToFigma(el as HTMLElement) as PlainLayerNode;
 
     const result = layers as PlainLayerNode[];
-    console.log(result, el);
     pluginMessage(
         {
             type: FigmaMessageType.IMPORT,
