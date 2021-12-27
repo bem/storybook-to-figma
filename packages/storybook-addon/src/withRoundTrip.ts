@@ -2,7 +2,8 @@ import { StoryFn as StoryFunction, useChannel } from "@storybook/addons";
 import { STORY_CHANGED } from "@storybook/core-events";
 import { EVENTS } from "./constants";
 
-export const withRoundTrip = (storyFn: StoryFunction) => {
+// TODO: Dirty fix was used here to resolve issues with types
+export const withRoundTrip = (storyFn: any) => {
   const emit = useChannel({
     [EVENTS.REQUEST]: () => {
       emit(EVENTS.RESULT, {

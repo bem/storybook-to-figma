@@ -2,8 +2,8 @@ import { StoryFn as StoryFunction, StoryContext } from "@storybook/addons";
 import { useEffect, useGlobals } from "@storybook/addons";
 import React from "react";
 import { ComponentWrapper } from './components/ComponentWrapper/ComponentWrapper';
-
-export const withGlobals = (StoryFn: StoryFunction, context: StoryContext) => {
+// TODO: Dirty fix was used here to resolve issues with types
+export const withGlobals = (StoryFn: any, context: StoryContext) => {
   const [{ myAddon }] = useGlobals();
 
   const enabled = context.viewMode === "story" && myAddon;
