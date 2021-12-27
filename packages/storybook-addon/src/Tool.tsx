@@ -18,7 +18,7 @@ export const Tool = () => {
     <IconButton
       key={TOOL_ID}
       active={myAddon}
-      title="Enable my addon"
+      title="Enable Storybook-To-Figma"
       onClick={toggleMyTool}
     >
       {/*

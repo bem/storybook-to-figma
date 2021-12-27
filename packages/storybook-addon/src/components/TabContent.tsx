@@ -22,7 +22,7 @@ interface TabContentProps {
 export const TabContent: React.FC<TabContentProps> = ({ code }) => (
   <TabWrapper>
     <TabInner>
-      <Title>My Addon</Title>
+      <Title>Storybook-To-Figma</Title>
       <p>
         Your addon can create a custom tab in Storybook. For example, the
         official{" "}
