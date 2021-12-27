@@ -14,15 +14,7 @@ addons.register(ADDON_ID, () => {
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: Tool,
   });
-
-  // Register the panel
-  addons.add(PANEL_ID, {
-    type: types.PANEL,
-    title: "Storybook-To-Figma",
-    match: ({ viewMode }) => viewMode === "story",
-    render: Panel,
-  });
-
+  
   // Register the tab
   addons.add(PANEL_ID, {
     type: types.TAB,
