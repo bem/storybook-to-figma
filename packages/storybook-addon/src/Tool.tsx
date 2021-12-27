@@ -21,7 +21,7 @@ export const Tool = () => {
       title="Enable Storybook-To-Figma"
       onClick={toggleMyTool}
     >
-      <Icons icon="grid" />
+      <Icons icon="ellipsis"/>
     </IconButton>
   );
 };
