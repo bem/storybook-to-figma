@@ -1,7 +1,7 @@
 import React from "react";
 import { useParameter } from "@storybook/api";
 import { PARAM_KEY } from "./constants";
-import { TabContent } from "./components/TabContent";
+import { TabContent } from "./components/Tab/TabContent";
 
 interface TabProps {
   active: boolean;
