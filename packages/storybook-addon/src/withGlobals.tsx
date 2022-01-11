@@ -3,6 +3,7 @@ import { useEffect, useGlobals } from "@storybook/addons";
 import React from "react";
 import { ComponentWrapper } from './components/ComponentWrapper/ComponentWrapper';
 import { ADDON_ACTIVE_ID } from "./constants"
+import useCombine from "./hooks/useCombine";
 
 // TODO: Dirty fix was used here to resolve issues with types
 export const withGlobals = (StoryFn: any, context: StoryContext) => {
@@ -13,9 +14,11 @@ export const withGlobals = (StoryFn: any, context: StoryContext) => {
     return StoryFn();
   }
 
-  return (
+  let multipliedComponet = useCombine(StoryFn, context, context.args);
+
+  return (  
       <ComponentWrapper props={context.args} name="test">
-         {StoryFn()}
+        {multipliedComponet}
       </ComponentWrapper>
   );
 };

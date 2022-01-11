@@ -14,14 +14,15 @@ addons.register(ADDON_ID, () => {
     render: Tool,
   });
 
+  /*
   // Register the tab
   addons.add(PANEL_ID, {
-    type: types.TAB,
+    type: types.PANEL,
     title: "Storybook-To-Figma",
     //👇 Checks the current route for the story
     route: ({ storyId }) => `/storybook-to-figma/${storyId}`,
     //👇 Shows the Tab UI element in myaddon view mode
     match: ({ viewMode }) => viewMode === "storybook-to-figma",
     render: Tab,
-  });
+  });*/
 });
