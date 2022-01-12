@@ -8,6 +8,7 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
-import { withGlobals } from "../withGlobals";
+import { CombineWrapper } from "../components/CombineWrapper/CombineWrapper";
+import { DragWrapper } from "../components/DragWrapper/DrawWrapper";
 
-export const decorators = [withGlobals];
+export const decorators = [DragWrapper, CombineWrapper];
