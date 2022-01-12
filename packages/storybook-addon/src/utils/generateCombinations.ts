@@ -1,5 +1,7 @@
 export function generateCombinations(a: any, b?: any): any;
 export function generateCombinations(obj: any): any {
+    if (Object.keys(obj).length === 0) return [{}];
+
     if (arguments.length > 1) {
         return [].slice.call(arguments).reduce(function (res : any, obj : any) {
             return res.concat(generateCombinations(obj));
