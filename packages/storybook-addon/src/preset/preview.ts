@@ -8,8 +8,9 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
+import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, DRAG_ACTIVE_ID } from "../constants";
 import { CombineWrapper } from "../components/CombineWrapper/CombineWrapper";
-import { DragWrapper } from "../components/DragWrapper/DrawWrapper";
+import { DragWrapper } from "../components/DragWrapper/DragWrapper";
 
 export const decorators = [DragWrapper, CombineWrapper];
 

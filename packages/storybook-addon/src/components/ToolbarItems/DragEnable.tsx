@@ -1,25 +1,17 @@
-import React, { useCallback } from "react";
-import { useGlobals } from "@storybook/api";
+import React from "react";
 import { Icons, IconButton } from "@storybook/components";
 import { DRAG_ACTIVE_ID } from "../../constants";
+import { useSingleGlobal } from "../../hooks/useSingleGlobal";
 
 export const DragEnable = () => {
-  const [{ [DRAG_ACTIVE_ID] : addonActive }, updateGlobals] = useGlobals();
-
-  const toggleDrag = useCallback(
-    () =>
-      updateGlobals({
-        [DRAG_ACTIVE_ID]: addonActive ? undefined : true,
-      }),
-    [addonActive]
-  );
+  let [dragActive, setDragActive] = useSingleGlobal(DRAG_ACTIVE_ID);
 
   return (
     <IconButton
       key={DRAG_ACTIVE_ID}
-      active={addonActive}
+      active={dragActive}
       title="Enable Drag'n'drop to Figma"
-      onClick={toggleDrag}
+      onClick={() => { setDragActive(dragActive ? undefined : true) }}
     >
       <Icons icon="button"/>
     </IconButton>

@@ -1,25 +1,17 @@
-import React, { useCallback } from "react";
-import { useGlobals } from "@storybook/api";
+import React from "react";
 import { Icons, IconButton } from "@storybook/components";
 import { COMBINATIONS_ACTIVE_ID } from "../../constants";
+import { useSingleGlobal } from "../../hooks/useSingleGlobal";
 
 export const Combinations = () => {
-  const [{ [COMBINATIONS_ACTIVE_ID] : addonActive }, updateGlobals] = useGlobals();
-
-  const toggleCombinations = useCallback(
-    () =>
-      updateGlobals({
-        [COMBINATIONS_ACTIVE_ID]: addonActive ? undefined : true,
-      }),
-    [addonActive]
-  );
+  let [combinationsActive, setCombinationsActive] = useSingleGlobal(COMBINATIONS_ACTIVE_ID);
 
   return (
     <IconButton
       key={COMBINATIONS_ACTIVE_ID}
-      active={addonActive}
+      active={combinationsActive}
       title="Enable Combinations"
-      onClick={toggleCombinations}
+      onClick={() => { setCombinationsActive(combinationsActive ? undefined : true) }}
     >
       <Icons icon="ellipsis"/>
     </IconButton>
