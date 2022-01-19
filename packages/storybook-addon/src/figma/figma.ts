@@ -1,6 +1,5 @@
 import { htmlToFigma } from 'html-figma/browser';
 import { PlainLayerNode } from 'html-figma/types';
-
 import {
     FigmaApplyAllTokensMessagePayload,
     FigmaApplyTokenMessagePayload,
@@ -9,11 +8,23 @@ import {
     FigmaRenderMessage,
 } from './FigmaMessageType';
 
-interface SendToFigmaParams {
-    // blocks: { figmaId?: string, name: string; props: unknown }[],
+interface SendSingleToFigmaParams {
     el: HTMLElement;
     name: string;
     props: unknown;
+    type?: FigmaRenderMessage['data']['type'],
+    position?: {
+        dropPosition: { clientX: number; clientY: number };
+        offset: {
+            x: number;
+            y: number;
+        };
+        windowSize: { width: number; height: number };
+    };
+}
+
+interface SendVariantsToFigmaParams {
+    blocks: { figmaId?: string, name: string; props: unknown }[],
     type?: FigmaRenderMessage['data']['type'],
     position?: {
         dropPosition: { clientX: number; clientY: number };
@@ -70,29 +81,13 @@ export const rendererSyncThemeMessage = (cssTokens: Record<string, string>) => {
     });
 };
 
-// export const sendToFigma = ({
-//     id,
-//     props = {},
-//     name,
-//     elem,
-//     position,
-// }: SendToFigmaParams) => {
-//     // const result = elem ? htmlToFigma(elem) : null;
-
-//     renderMessage({
-//         block: { name, props: objectToPlainObject(props) },
-//         position,
-//         type: 'single',
-//     });
-// };
-
-export const sendToFigma = ({
+export const sendSingleToFigma = ({
     el,
     name,
     props,
     position,
     type = 'single'
-}: SendToFigmaParams) => {
+}: SendSingleToFigmaParams) => {
 
     const layers = htmlToFigma(el as HTMLElement) as PlainLayerNode;
 
@@ -118,16 +113,26 @@ export const sendToFigma = ({
         },
         true
     );
+};
 
-    // renderMessage({
-    //     blocks: blocks.map(({ figmaId, name, props }) => ({
-    //         name,
-    //         figmaId,
-    //         props: objectToPlainObject(props),
-    //     })),
-    //     position,
-    //     type,
-    // });
+export const sendVariantsToFigma = ({
+    blocks,
+    position,
+    type = 'single'
+}: SendVariantsToFigmaParams) => {
+    if(type === "variants") {
+        renderMessage({
+            blocks: blocks.map(({ figmaId, name, props }) => ({
+                name,
+                figmaId,
+                props: objectToPlainObject(props),
+            })),
+            position,
+            type,
+        });
+    } else {
+        
+    }
 };
 
 export const applyTokenToFigma = (payload: FigmaApplyTokenMessagePayload) => {
