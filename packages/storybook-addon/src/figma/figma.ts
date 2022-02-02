@@ -60,24 +60,10 @@ const objectToPlainObject = (
     }, {});
 };
 
-export const rendererMessage = (data: FigmaMessages) => {
-    // @ts-expect-error
-    const frame = document?.getElementById('renderer-frame')?.contentWindow;
-
-    frame?.postMessage(data, '*');
-};
-
 export const renderMessage = (data: FigmaRenderMessage['data']) => {
-    rendererMessage({
+    pluginMessage({
         type: FigmaMessageType.RENDER,
         data: data,
-    });
-};
-
-export const rendererSyncThemeMessage = (cssTokens: Record<string, string>) => {
-    rendererMessage({
-        type: FigmaMessageType.RENDER_TOKENS_SYNC,
-        data: cssTokens,
     });
 };
 
@@ -85,8 +71,7 @@ export const sendSingleToFigma = ({
     el,
     name,
     props,
-    position,
-    type = 'single'
+    position
 }: SendSingleToFigmaParams) => {
 
     const layers = htmlToFigma(el as HTMLElement) as PlainLayerNode;
@@ -108,7 +93,7 @@ export const sendSingleToFigma = ({
                         position
                     }
                 }),
-                type
+                type: 'single'
             },
         },
         true
@@ -120,19 +105,15 @@ export const sendVariantsToFigma = ({
     position,
     type = 'single'
 }: SendVariantsToFigmaParams) => {
-    if(type === "variants") {
-        renderMessage({
-            blocks: blocks.map(({ figmaId, name, props }) => ({
-                name,
-                figmaId,
-                props: objectToPlainObject(props),
-            })),
-            position,
-            type,
-        });
-    } else {
-        
-    }
+    renderMessage({
+        blocks: blocks.map(({ figmaId, name, props }) => ({
+            name,
+            figmaId,
+            props: objectToPlainObject(props),
+        })),
+        position,
+        type,
+    });
 };
 
 export const applyTokenToFigma = (payload: FigmaApplyTokenMessagePayload) => {

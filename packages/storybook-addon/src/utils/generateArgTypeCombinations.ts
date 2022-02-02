@@ -1,19 +1,8 @@
-import { StrictArgTypes } from "@storybook/csf";
 import { generateCombinations } from "./generateCombinations";
 import { Args } from "@storybook/addons";
 import { combineParameters } from "@storybook/api";
 
-export default function generateArgTypeCombinations(argTypes : StrictArgTypes, args : Args) {
-    let fieldsToCombine : {[name : string] : Array<any> } = {};
-
-    for(let [argName, argObject] of Object.entries(argTypes)) {
-        if (argObject.type.name === "boolean") {
-            fieldsToCombine[argName] = [true, false];
-        } else if (argObject.type.name === "enum") {
-            fieldsToCombine[argName] = argObject.type.value;
-        }
-    }
-    
+export default function generateArgTypeCombinations(fieldsToCombine : any, args : Args) {
     let combinations = generateCombinations(fieldsToCombine) as Array<any>;
 
     // A 'combineParameters' function merges two objects, preferencing last one

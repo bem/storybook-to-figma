@@ -78,7 +78,6 @@ export const useDragToFigma = (
         position: { offset, dropPosition, windowSize },
         name: params.name,
         props: params.props
-        // blocks: [{ name: params.name, props: params.props || {} }]
       })
     }
 

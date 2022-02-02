@@ -1,6 +1,15 @@
+import { Combinations } from "../components/ToolbarItems/Combinations";
+
 export function generateCombinations(a: any, b?: any): any;
 export function generateCombinations(obj: any): any {
+    if (obj === undefined) return [{}];
     if (Object.keys(obj).length === 0) return [{}];
+
+    // This dummy object parameter is a hack to avoid
+    // function from crashing
+    if(Object.keys(obj).length === 1) {
+        obj["somedummyparameter"] = "somedummyparameter"
+    }
 
     if (arguments.length > 1) {
         return [].slice.call(arguments).reduce(function (res : any, obj : any) {

@@ -1,13 +1,14 @@
 import { StoryContext } from "@storybook/addons";
 import { useGlobals } from "@storybook/addons";
-import { COMBINATIONS_ACTIVE_ID } from "../../constants"
-import useCombine from "../../hooks/useCombine";
+import { useAddonState } from "@storybook/client-api";
+import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, CURRENT_STORY_FN_ID } from "../../constants"
+import combineComponent from "../../utils/combineComponent";
 
 export const CombineWrapper = (StoryFn: any, context: StoryContext) => {
-  const [{ [COMBINATIONS_ACTIVE_ID] : addonActive }] = useGlobals();
+  const [{ [COMBINATIONS_ACTIVE_ID] : combinationsActive }] = useGlobals();
+  let [fieldsToCombine] = useAddonState(COMBINATIONS_GLOBAL_ID, {});
 
-  const enabled = context.viewMode === "story" && addonActive;
+  const enabled = context.viewMode === "story" && combinationsActive;
 
-  let multipliedComponent = useCombine(StoryFn, context, context.args);
-  return enabled ? multipliedComponent : StoryFn();
+  return enabled ? combineComponent(StoryFn, context, fieldsToCombine) : StoryFn();
 };

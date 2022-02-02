@@ -5,3 +5,4 @@ export const COMBINATIONS_ACTIVE_ID = `${ADDON_ID}-combinations-active`
 export const DRAG_ACTIVE_ID = `${ADDON_ID}-drag-active`
 
 export const COMBINATIONS_GLOBAL_ID = `${ADDON_ID}-combinations-global`
+export const CURRENT_STORY_FN_ID = `${ADDON_ID}-current-story-fn`
