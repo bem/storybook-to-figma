@@ -1,6 +1,6 @@
 import { convertElementToSingleLayer, objectToPlainObject } from "./commons";
-import { pluginMessage } from "./figma";
-import { FigmaMessageType } from "./FigmaMessageType";
+import { pluginMessage } from "./commons";
+import { FigmaMessageType } from "./types/FigmaMessageType";
 
 interface SendVariantsToFigmaParams {
     elements: HTMLElement[],

@@ -1,13 +1,7 @@
-import { htmlToFigma } from 'html-figma/browser';
-import { PlainLayerNode } from 'html-figma/types';
-import React from 'react';
-import {
-    FigmaApplyAllTokensMessagePayload,
-    FigmaApplyTokenMessagePayload,
-    FigmaMessages,
-    FigmaMessageType,
-    FigmaRenderMessage,
-} from './FigmaMessageType';
+import { htmlToFigma } from "html-figma/browser";
+import { PlainLayerNode } from "html-figma/types";
+import { pluginMessage } from "./commons";
+import { FigmaMessageType, FigmaRenderMessage } from "./types/FigmaMessageType";
 
 interface SendSingleToFigmaParams {
     el: HTMLElement;
@@ -23,23 +17,6 @@ interface SendSingleToFigmaParams {
         windowSize: { width: number; height: number };
     };
 }
-
-export const pluginMessage = (data: FigmaMessages, parent = false) => {
-    const handlerWindow = window.parent;
-    (parent ? handlerWindow.parent : handlerWindow).postMessage(
-        {
-            pluginMessage: data,
-        },
-        '*'
-    );
-};
-
-export const renderMessage = (data: FigmaRenderMessage['data']) => {
-    pluginMessage({
-        type: FigmaMessageType.RENDER,
-        data: data,
-    });
-};
 
 export const sendSingleToFigma = ({
     el,
@@ -71,20 +48,4 @@ export const sendSingleToFigma = ({
         },
         true
     );
-};
-
-export const applyTokenToFigma = (payload: FigmaApplyTokenMessagePayload) => {
-    pluginMessage({
-        type: FigmaMessageType.APPLY_TOKEN,
-        data: payload,
-    });
-};
-
-export const applyAllTokensToFigma = (
-    payload: FigmaApplyAllTokensMessagePayload
-) => {
-    pluginMessage({
-        type: FigmaMessageType.APPLY_TOKENS,
-        data: payload,
-    });
 };
