@@ -1,14 +1,32 @@
 import { StoryContext } from "@storybook/addons";
 import { useGlobals } from "@storybook/addons";
+import { addons } from "@storybook/addons";
 import { useAddonState } from "@storybook/client-api";
-import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, CURRENT_STORY_FN_ID } from "../../constants"
+import * as React from "react";
+import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, CURRENT_STORY_FN_ID, SEND_VARIANTS_TO_FIGMA_ID } from "../../constants"
+import { sendSingleToFigma } from "../../figma/figma";
 import combineComponent from "../../utils/combineComponent";
+import ReactDOM from "react-dom";
+import { useWrapperActive } from "../../hooks/useWrapperActive";
 
 export const CombineWrapper = (StoryFn: any, context: StoryContext) => {
-  const [{ [COMBINATIONS_ACTIVE_ID] : combinationsActive }] = useGlobals();
+  let ref = React.useRef(null);
+
+  const wrapperEnabled = useWrapperActive(COMBINATIONS_ACTIVE_ID, ["story"], context);
   let [fieldsToCombine] = useAddonState(COMBINATIONS_GLOBAL_ID, {});
+  let channel = addons.getChannel()
 
-  const enabled = context.viewMode === "story" && combinationsActive;
+  let combinedComponents = combineComponent(StoryFn, context, fieldsToCombine);
 
-  return enabled ? combineComponent(StoryFn, context, fieldsToCombine) : StoryFn();
+  let mountedVariants = ref.current;
+  
+  channel.on("sendVariantsToFigma", () => {
+    if(mountedVariants !== null) {
+      
+    }
+  })
+
+  return wrapperEnabled ? <div ref={ref}>
+    {combinedComponents}
+  </div> : StoryFn();
 };
