@@ -4,11 +4,12 @@ import FigmaRequestListener from './modules/figmaStorage/FigmaRequestListener';
 const figmaRequestListener = new FigmaRequestListener(figma);
 
 figma.showUI(__html__, {
-  width: 750,
-  height: 600,
+  width: 1125,
+  height: 900,
 })
 
 figma.ui.onmessage = async (message) => {
+  console.log(message);
   let data = message.data;
 
   if(data) {
