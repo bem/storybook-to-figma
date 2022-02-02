@@ -11,7 +11,7 @@ interface SendVariantsToFigmaParams {
 export const sendVariantsToFigma = (params : SendVariantsToFigmaParams) => {
     let elementsAndPropsCombined = combineElementsWithProps(params.elements, params.props);
 
-    console.log({
+    pluginMessage({
         type: FigmaMessageType.IMPORT_VARIANTS,
         data: {
             nodes: prepareNodesListForVariantsMessage(elementsAndPropsCombined, params.componentName)
