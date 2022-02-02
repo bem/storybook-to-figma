@@ -42,8 +42,10 @@ export interface FigmaImportMessage {
 export interface FigmaImportVariantsMessage {
     type: FigmaMessageType.IMPORT_VARIANTS;
     data: {
-        layers: PlainLayerNode[];
-        componentsData: { name: string; props: unknown }[];
+        nodes: {
+            layer: PlainLayerNode[];
+            componentData: { name: string; props: unknown }[];
+        }[];
     };
 }
 

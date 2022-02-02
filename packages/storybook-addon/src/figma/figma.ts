@@ -1,5 +1,6 @@
 import { htmlToFigma } from 'html-figma/browser';
 import { PlainLayerNode } from 'html-figma/types';
+import React from 'react';
 import {
     FigmaApplyAllTokensMessagePayload,
     FigmaApplyTokenMessagePayload,
@@ -23,19 +24,6 @@ interface SendSingleToFigmaParams {
     };
 }
 
-interface SendVariantsToFigmaParams {
-    blocks: { figmaId?: string, name: string; props: unknown }[],
-    type?: FigmaRenderMessage['data']['type'],
-    position?: {
-        dropPosition: { clientX: number; clientY: number };
-        offset: {
-            x: number;
-            y: number;
-        };
-        windowSize: { width: number; height: number };
-    };
-}
-
 export const pluginMessage = (data: FigmaMessages, parent = false) => {
     const handlerWindow = window.parent;
     (parent ? handlerWindow.parent : handlerWindow).postMessage(
@@ -44,20 +32,6 @@ export const pluginMessage = (data: FigmaMessages, parent = false) => {
         },
         '*'
     );
-};
-
-const objectToPlainObject = (
-    obj: unknown
-): Record<string, string | number | object> => {
-    return Object.keys(obj as Record<string, unknown>).reduce((res, key) => {
-        // @ts-expect-error
-        if (typeof obj[key] !== 'function') {
-            // @ts-expect-error
-            res[key] = obj[key];
-        }
-
-        return res;
-    }, {});
 };
 
 export const renderMessage = (data: FigmaRenderMessage['data']) => {
@@ -73,7 +47,6 @@ export const sendSingleToFigma = ({
     props,
     position
 }: SendSingleToFigmaParams) => {
-
     const layers = htmlToFigma(el as HTMLElement) as PlainLayerNode;
 
     const result = layers as PlainLayerNode[];
@@ -98,22 +71,6 @@ export const sendSingleToFigma = ({
         },
         true
     );
-};
-
-export const sendVariantsToFigma = ({
-    blocks,
-    position,
-    type = 'single'
-}: SendVariantsToFigmaParams) => {
-    renderMessage({
-        blocks: blocks.map(({ figmaId, name, props }) => ({
-            name,
-            figmaId,
-            props: objectToPlainObject(props),
-        })),
-        position,
-        type,
-    });
 };
 
 export const applyTokenToFigma = (payload: FigmaApplyTokenMessagePayload) => {

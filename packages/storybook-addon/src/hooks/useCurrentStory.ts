@@ -5,7 +5,8 @@ export function useCurrentStory() : [story : Story, storyLoaded : boolean] {
     let api = useStorybookApi();
     let storyId = state.storyId;
 
-    let story = api.resolveStory(storyId) as Story;
+    if(!api) return [undefined, false];
 
+    let story = api.resolveStory(storyId) as Story;
     return story ? [story, true] : [undefined, false];
 }

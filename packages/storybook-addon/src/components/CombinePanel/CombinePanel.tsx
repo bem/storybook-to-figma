@@ -5,10 +5,7 @@ import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, SEND_VARIANTS_TO_FIGMA_
 import { useAddonState } from "@storybook/api";
 import { useGlobals } from "@storybook/api";
 import EnableCombinationsPrompt from "./EnableCombinationsPrompt";
-import { useSendVariants } from "../../hooks/useSendVariants";
-import { useComponentName } from "../../hooks/useComponentName";
 import addons, { useStoryContext } from "@storybook/addons";
-import { useCurrentStory } from "../../hooks/useCurrentStory";
 
 export function CombinePanel() {
     let tableRows = useCombinationRows();
