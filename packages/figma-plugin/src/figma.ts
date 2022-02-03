@@ -36,6 +36,6 @@ async function processAddonMessage(message : any) : Promise<void> {
   } else if(type === FigmaMessageType.IMPORT_VARIANTS) {
     importVariants(nodes, baseFrame)
   } else {
-    console.warn("Unknown message type!")
+    console.warn("Unknown message type :" + type)
   }
 }
