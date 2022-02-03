@@ -10,13 +10,12 @@ interface SendVariantsToFigmaParams {
 
 export const sendVariantsToFigma = (params : SendVariantsToFigmaParams) => {
     let elementsAndPropsCombined = combineElementsWithProps(params.elements, params.props);
-
     pluginMessage({
         type: FigmaMessageType.IMPORT_VARIANTS,
         data: {
             nodes: prepareNodesListForVariantsMessage(elementsAndPropsCombined, params.componentName)
         }
-    });
+    }, true);
 };
 
 function combineElementsWithProps(elements: HTMLElement[], props: any[]) : [HTMLElement, any][] {

@@ -42,10 +42,8 @@ export const sendSingleToFigma = ({
                         componentData: { name, props },
                         position
                     }
-                }),
-                type: 'single'
+                })
             },
-        },
-        true
+        }, true
     );
 };

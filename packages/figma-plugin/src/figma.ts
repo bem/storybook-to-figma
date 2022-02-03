@@ -1,5 +1,8 @@
 import { defaultFont, getDropOffset, addLayersToFrame } from 'html-figma/figma';
+import { FigmaMessageType } from './modules/FigmaMessageType';
 import FigmaRequestListener from './modules/figmaStorage/FigmaRequestListener';
+import { importSingle } from './modules/importFunctions/importSingle';
+import { importVariants } from './modules/importFunctions/importVariants';
 
 const figmaRequestListener = new FigmaRequestListener(figma);
 
@@ -9,8 +12,9 @@ figma.showUI(__html__, {
 })
 
 figma.ui.onmessage = async (message) => {
-  console.log(message);
   let data = message.data;
+
+  console.log(data);
 
   if(data) {
     await processAddonMessage(message)
@@ -24,16 +28,14 @@ async function processAddonMessage(message : any) : Promise<void> {
 
   let baseFrame: PageNode | FrameNode = figma.currentPage;
 
-  const { data } = message;
-  let { nodes, type } = data;
+  const { data, type } = message;
+  let { nodes } = data;
 
-  for (const { id, layer, position, componentData } of nodes) {
-    if (position) {
-      const { x, y } = getDropOffset(position);
-      layer.x = x;
-      layer.y = y;
-    }
-
-    await addLayersToFrame([layer], baseFrame);
+  if(type === FigmaMessageType.IMPORT) {
+    importSingle(nodes, baseFrame)
+  } else if(type === FigmaMessageType.IMPORT_VARIANTS) {
+    importVariants(nodes, baseFrame)
+  } else {
+    console.warn("Unknown message type!")
   }
 }
