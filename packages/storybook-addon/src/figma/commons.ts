@@ -16,13 +16,7 @@ export const pluginMessage = (data: FigmaMessages, parent = false) => {
 export const objectToPlainObject = (
     obj: unknown
 ): Record<string, string | number | object> => {
-    return Object.keys(obj as Record<string, unknown>).reduce((res, key) => {
-        // @ts-expect-error
-        if (typeof obj[key] !== 'function') {
-            // @ts-expect-error
-            res[key] = obj[key];
-        }
-
-        return res;
-    }, {});
+    return Object.fromEntries(
+        Object.entries(obj).filter(([key, value]) => typeof value !== 'function')
+    )
 };
