@@ -3,10 +3,10 @@ import { StoryContext } from "@storybook/addons";
 
 import { DRAG_ACTIVE_ID } from "../../constants"
 import { DragComponent } from "./DragComponent";
-import { useWrapperActive } from "../../hooks/useWrapperActive";
+import { useIsWrapperEnabled } from "../../hooks/useIsWrapperEnabled";
 
 export const DragWrapper = (StoryFn: any, context: StoryContext) => {
-    const wrapperEnabled = useWrapperActive(DRAG_ACTIVE_ID, ["story"], context);
+    const wrapperEnabled = useIsWrapperEnabled(DRAG_ACTIVE_ID, ["story"], context);
 
     if (wrapperEnabled) {
         return <DragComponent props={context.args} name="test">
