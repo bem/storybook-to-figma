@@ -1,6 +1,7 @@
-import { generateCombinations } from "./generateCombinations";
 import { Args } from "@storybook/addons";
 import { combineParameters } from "@storybook/api";
+
+import { generateCombinations } from "./generateCombinations";
 
 export default function generateArgTypeCombinations(fieldsToCombine : any, args : Args) {
     let combinations = generateCombinations(fieldsToCombine) as Array<any>;

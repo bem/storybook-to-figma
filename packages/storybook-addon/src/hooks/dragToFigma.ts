@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+
 import { sendSingleToFigma } from '../figma/sendSingleToFigma'
 
 interface ComponentParams {

@@ -1,7 +1,6 @@
 import React from "react";
-
 import { StoryContext } from "@storybook/addons";
-import { useGlobals } from "@storybook/addons";
+
 import { DRAG_ACTIVE_ID } from "../../constants"
 import { DragComponent } from "./DragComponent";
 import { useWrapperActive } from "../../hooks/useWrapperActive";

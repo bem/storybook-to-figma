@@ -1,5 +1,3 @@
-import { Combinations } from "../components/ToolbarItems/Combinations";
-
 export function generateCombinations(a: any, b?: any): any;
 export function generateCombinations(obj: any): any {
     if (obj === undefined) return [{}];

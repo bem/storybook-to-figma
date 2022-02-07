@@ -1,5 +1,6 @@
+import React from "react"
 import { StoryContext } from "@storybook/addons";
-import * as React from "react";
+
 import generateArgTypeCombinations from "./generateArgTypeCombinations";
 
 export function combineComponent(storyFn: any, context : StoryContext, fieldsToCombine : any) : [React.ReactElement, any[]] {
