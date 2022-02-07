@@ -4,8 +4,6 @@ import { FigmaImportVariantsNode } from "../FigmaMessageType";
 export const importVariants = async (nodes: FigmaImportVariantsNode[], baseFrame: PageNode | FrameNode) => {
     let addedNodes: SceneNode[] = [];
 
-    console.log(nodes);
-
     for(let { layer, componentData } of nodes) {
         const componentLayer = {
             ...layer,
@@ -19,8 +17,6 @@ export const importVariants = async (nodes: FigmaImportVariantsNode[], baseFrame
             }
         });
     }
-
-    console.log(addedNodes);
 
     addCoordinatesToNodes(addedNodes);
     figma.combineAsVariants(addedNodes as ComponentNode[], baseFrame);

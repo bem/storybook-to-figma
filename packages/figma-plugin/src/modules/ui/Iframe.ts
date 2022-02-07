@@ -38,8 +38,6 @@ export default class Iframe {
     }
 
     private setPlaceholderActive(active : boolean) {
-        console.log(active);
-
         document.getElementById("iframe_placeholder").style.display = active ? "flex"   : "none";
         document.getElementById("storybook_iframe").style.display   = active ? "none"   : "inline";
     }

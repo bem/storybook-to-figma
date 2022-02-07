@@ -14,8 +14,6 @@ figma.showUI(__html__, {
 figma.ui.onmessage = async (message) => {
   let data = message.data;
 
-  console.log(data);
-
   if(data) {
     await processAddonMessage(message)
   } else {
