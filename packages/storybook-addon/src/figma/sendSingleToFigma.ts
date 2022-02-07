@@ -25,24 +25,16 @@ export const sendSingleToFigma = ({
     position
 }: SendSingleToFigmaParams) => {
     const layers = htmlToFigma(el as HTMLElement) as PlainLayerNode;
-
-    const result = layers as PlainLayerNode[];
     pluginMessage(
         {
             type: FigmaMessageType.IMPORT,
             data: {
                 // @ts-expect-error
-                nodes: [result].map(({ children }, index) => {
-                    const layer = children[0];
-                    // const { name, props, figmaId } = components[index];
-
-                    return {
-                        // id: figmaId,
-                        layer,
-                        componentData: { name, props },
-                        position
-                    }
-                })
+                nodes: [{
+                    layer : layers.children[0],
+                    componentData: { name, props },
+                    position,
+                }]
             },
         }, true
     );
