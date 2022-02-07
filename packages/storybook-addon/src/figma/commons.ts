@@ -13,12 +13,6 @@ export const pluginMessage = (data: FigmaMessages, parent = false) => {
     );
 };
 
-export function convertElementToSingleLayer(element : HTMLElement) {
-    const layers = htmlToFigma(element) as PlainLayerNode[];
-
-    return layers;
-}
-
 export const objectToPlainObject = (
     obj: unknown
 ): Record<string, string | number | object> => {

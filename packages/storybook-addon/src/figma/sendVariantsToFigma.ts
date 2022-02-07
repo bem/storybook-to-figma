@@ -1,4 +1,6 @@
-import { convertElementToSingleLayer, objectToPlainObject } from "./commons";
+import { htmlToFigma } from "html-figma/browser";
+import { PlainLayerNode } from "html-figma/types";
+import { objectToPlainObject } from "./commons";
 import { pluginMessage } from "./commons";
 import { FigmaMessageType } from "./types/FigmaMessageType";
 
@@ -27,7 +29,7 @@ function prepareNodesListForVariantsMessage(combinedElementsAndProps: [HTMLEleme
 }
 
 function getNodeInfo(element: HTMLElement, props: any, componentName : string): any {
-    let convertedLayer = convertElementToSingleLayer(element);
+    let convertedLayer = htmlToFigma(element) as PlainLayerNode;
 
     return {
         componentData : {
