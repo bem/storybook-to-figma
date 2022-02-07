@@ -29,13 +29,12 @@ export const sendSingleToFigma = ({
         {
             type: FigmaMessageType.IMPORT,
             data: {
-                // @ts-expect-error
                 nodes: [{
                     layer : layers.children[0],
                     componentData: { name, props },
                     position,
                 }]
-            },
+            } as any,
         }, true
     );
 };
