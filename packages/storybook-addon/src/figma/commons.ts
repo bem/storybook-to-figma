@@ -1,6 +1,3 @@
-import { htmlToFigma } from "html-figma/browser";
-import { PlainLayerNode } from "html-figma/types";
-
 import { FigmaMessages } from "./types/FigmaMessageType";
 
 export const pluginMessage = (data: FigmaMessages, parent = false) => {

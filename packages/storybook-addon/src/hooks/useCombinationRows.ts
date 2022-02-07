@@ -6,7 +6,7 @@ export function useCombinationRows() : StrictArgTypes {
 
     let tableRows: StrictArgTypes = {}
 
-    Object.entries(argTypes).map(([name, arg]) => {
+    Object.entries(argTypes).forEach(([name, arg]) => {
         let newRow = {
             control: {
                 type: undefined as string
