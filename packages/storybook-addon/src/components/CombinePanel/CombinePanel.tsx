@@ -1,11 +1,12 @@
 import React from "react";
+import addons from "@storybook/addons";
+import { useAddonState } from "@storybook/api";
+import { useGlobals } from "@storybook/api";
 import { ArgsTable, Button } from "@storybook/components";
 import { useCombinationRows } from "../../hooks/useCombinationRows";
-import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID, SEND_VARIANTS_TO_FIGMA_ID } from "../../constants";
-import { useAddonState, useStorybookApi } from "@storybook/api";
-import { useGlobals } from "@storybook/api";
+
+import { COMBINATIONS_ACTIVE_ID, COMBINATIONS_GLOBAL_ID } from "../../constants";
 import EnableCombinationsPrompt from "./EnableCombinationsPrompt";
-import addons, { useStoryContext } from "@storybook/addons";
 import { useComponentName } from "../../hooks/useComponentName";
 
 export function CombinePanel() {
@@ -21,12 +22,11 @@ export function CombinePanel() {
     return <>
         <ArgsTable
             rows={tableRows}
-            resetArgs={function noRefCheck() { }}
-            updateArgs={(changedArgs) => {
-                setArgs({ ...args, ...changedArgs });
-            }}/>
-        <Button primary={true} onClick={() => {
-            channel.emit("sendVariantsToFigma", currentComponentName)
-        }}>Send component to Figma</Button>
+            updateArgs={(changedArgs) => setArgs({ ...args, ...changedArgs })}
+        />
+        
+        <Button primary={true} onClick={() => channel.emit("sendVariantsToFigma", currentComponentName)}>
+            Send component to Figma
+        </Button>
     </>
 }
