@@ -28,12 +28,14 @@ export const importVariants = async (nodes: FigmaImportVariantsNode[], baseFrame
 
 const addCoordinatesToNodes = (nodes : any[]) => {
     const { x, y } = figma.viewport.center;
+    let failsafeHeight = 100;
+    let gap = 10;
 
     let offsetTop = 0;
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].x = x;
         nodes[i].y = y + offsetTop;
-        offsetTop += (nodes[i].height || 100) + 10;
+        offsetTop += (nodes[i].height || failsafeHeight) + gap;
     }
 }
 const getVariantNameFromProps = (props: Record<string, string>) => {
