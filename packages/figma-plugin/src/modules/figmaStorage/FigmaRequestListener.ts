@@ -1,5 +1,5 @@
-import FigmaRequest from "./FigmaRequest";
-import RequestType from "./requestType";
+import { FigmaStorageRequest, FigmaStorageSetRequest, FigmaStorageGetRequest } from "./FigmaStorageRequest";
+import { RequestType } from "./RequestType";
 
 export default class FigmaRequestListener {
     private figma : PluginAPI;
@@ -8,32 +8,32 @@ export default class FigmaRequestListener {
         this.figma = figma;
     }
 
-    async processPossibleRequest(request : any) {
-        if (request?.type === undefined) return;
+    async processPossibleMessage(message : FigmaStorageRequest) {
+        if (message?.type === undefined) return;
 
-        if (request.type === RequestType.GET) {
-            await this.processGetRequest(request);
-        } else if(request.type === RequestType.SET) {
-            await this.processSetRequest(request);
+        if (message.type === RequestType.GET) {
+            await this.processGetMessage(message);
+        } else if (message.type === RequestType.SET) {
+            await this.processSetMessage(message);
         }
     }
 
-    private async processGetRequest(request: FigmaRequest) {
+    private async processGetMessage(request: FigmaStorageGetRequest) {
         let key = request.payload;
 
-        let readResult = await this.figma.clientStorage.getAsync(key);
+        let readResult = await this.figma.clientStorage.getAsync(key) as unknown;
 
         this.sendResponceForRequest(request, readResult);
     }
 
-    private async processSetRequest(request: FigmaRequest) {
+    private async processSetMessage(request: FigmaStorageSetRequest) {
         let { key, value } = request.payload;
 
         await this.figma.clientStorage.setAsync(key, value);
         this.sendResponceForRequest(request, "OK");
     }
 
-    private sendResponceForRequest(request: FigmaRequest, result: any) {
+    private sendResponceForRequest(request: FigmaStorageRequest, result: unknown) {
        let responce = {
             timestamp: request.timestamp,
             result: result,

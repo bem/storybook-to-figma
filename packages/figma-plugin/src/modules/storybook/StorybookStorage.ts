@@ -18,8 +18,8 @@ export default class StorybookStorage {
     }
 
     async requestStorybooks() : Promise<void> {
-        this.storybooks = await this.figmaStorage.getItem("storybooks");
-        this.selectedId = await this.figmaStorage.getItem("selectedId");
+        this.storybooks = await this.figmaStorage.getItem("storybooks") as Storybook[];
+        this.selectedId = await this.figmaStorage.getItem("selectedId") as string;
     }
 
     awaitForRequest() {

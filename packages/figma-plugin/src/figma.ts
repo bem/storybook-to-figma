@@ -1,5 +1,5 @@
 import { defaultFont, getDropOffset, addLayersToFrame } from 'html-figma/figma';
-import { FigmaMessageType } from './modules/FigmaMessageType';
+import { FigmaImportMessage, FigmaImportVariantsMessage, FigmaImportVariantsNode, FigmaMessageType } from './modules/FigmaMessageType';
 import FigmaRequestListener from './modules/figmaStorage/FigmaRequestListener';
 import { importSingle } from './modules/importFunctions/importSingle';
 import { importVariants } from './modules/importFunctions/importVariants';
@@ -17,11 +17,11 @@ figma.ui.onmessage = async (message) => {
   if(data) {
     await processAddonMessage(message)
   } else {
-    await figmaRequestListener.processPossibleRequest(message);
+    await figmaRequestListener.processPossibleMessage(message);
   }
 }
 
-async function processAddonMessage(message : any) : Promise<void> {
+async function processAddonMessage(message : FigmaImportMessage | FigmaImportVariantsMessage) : Promise<void> {
   await figma.loadFontAsync(defaultFont);
 
   let baseFrame: PageNode | FrameNode = figma.currentPage;
@@ -32,7 +32,7 @@ async function processAddonMessage(message : any) : Promise<void> {
   if(type === FigmaMessageType.IMPORT) {
     importSingle(nodes, baseFrame)
   } else if(type === FigmaMessageType.IMPORT_VARIANTS) {
-    importVariants(nodes, baseFrame)
+    importVariants(nodes as FigmaImportVariantsNode[], baseFrame)
   } else {
     console.warn("Unknown message type :" + type)
   }
