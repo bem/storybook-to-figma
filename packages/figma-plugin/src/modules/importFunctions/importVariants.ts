@@ -12,7 +12,7 @@ export const importVariants = async (nodes: FigmaImportVariantsNode[], baseFrame
 
         await addLayersToFrame([componentLayer], baseFrame, ({ node, parent }) => {
             if (!parent) {
-                setPluginData(node, componentData);
+                node.setPluginData('componentData', JSON.stringify(componentData));
                 addedNodes.push(node);
             }
         });
@@ -36,11 +36,6 @@ const addCoordinatesToNodes = (nodes : any[]) => {
         offsetTop += (nodes[i].height || 100) + 10;
     }
 }
-
-const setPluginData = (node: SceneNode, componentData: { name: string, props: any[] }) => {
-    node.setPluginData('componentData', JSON.stringify(componentData));
-};
-
 const getVariantNameFromProps = (props: Record<string, string>) => {
     return Object.keys(props)
         .filter((key) => key !== 'children')
