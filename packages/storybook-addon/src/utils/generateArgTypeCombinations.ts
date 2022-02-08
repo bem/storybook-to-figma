@@ -3,7 +3,7 @@ import { combineParameters } from "@storybook/api";
 
 import { generateCombinations } from "./generateCombinations";
 
-export default function generateArgTypeCombinations(fieldsToCombine : any, args : Args) {
+export default function generateArgTypeCombinations(fieldsToCombine: { [s: string]: (unknown[] | string) }, args : Args) {
     let combinations = generateCombinations(fieldsToCombine) as Array<any>;
 
     // A 'combineParameters' function merges two objects, preferencing last one
