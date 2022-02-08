@@ -1,8 +1,8 @@
-.ComponentWrapper {
+.DragWrapper {
     display: contents;
 }
 
-.ComponentWrapper-Element {
+.DragWrapper-Element {
     display: contents;
     pointer-events: none;
 }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { sendToFigma } from '../../figma/figma'
+
+import { sendSingleToFigma } from '../figma/sendSingleToFigma'
 
 interface ComponentParams {
   name: string
@@ -73,12 +74,11 @@ export const useDragToFigma = (
         x: offsetX,
         y: offsetY,
       }
-      sendToFigma({
+      sendSingleToFigma({
         el,
         position: { offset, dropPosition, windowSize },
         name: params.name,
         props: params.props
-        // blocks: [{ name: params.name, props: params.props || {} }]
       })
     }
 

@@ -147,9 +147,12 @@ const Button = component(UnstyledButton, {
   },
 })
 
+// TODO: Dirty fix was used here to resolve issues with types
 const Danger = component(Button, {
   defaultProps: {
-    kind: 'danger',
+    kind: 'default',
+    type: 'submit',
+    size: 'm'
   },
   variants: {
     kind: {
@@ -161,6 +164,8 @@ const Danger = component(Button, {
 const Danger1 = component(Button, {
   defaultProps: {
     kind: 'default',
+    type: 'submit',
+    size: 'm'
   },
   variants: {
     kind: {
@@ -171,7 +176,9 @@ const Danger1 = component(Button, {
 
 const Danger2 = component(Button, {
   defaultProps: {
-    kind: 'primary',
+    kind: 'default',
+    type: 'submit',
+    size: 'm'
   },
   variants: {
     kind: {
