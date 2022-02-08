@@ -8,11 +8,8 @@ import { useIsWrapperEnabled } from "../../hooks/useIsWrapperEnabled";
 export const DragWrapper = (StoryFn: any, context: StoryContext) => {
     const wrapperEnabled = useIsWrapperEnabled(DRAG_ACTIVE_ID, ["story"], context);
 
-    if (wrapperEnabled) {
-        return <DragComponent props={context.args} name="test">
+    return wrapperEnabled ? 
+        <DragComponent props={context.args} name="test">
             {StoryFn()}
-        </DragComponent>
-    } else {
-        return StoryFn();
-    }
+        </DragComponent> : StoryFn();
 };
